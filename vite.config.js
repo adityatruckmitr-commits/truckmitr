@@ -21,7 +21,7 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: '../public/truckmitr',
+    outDir: 'dist',
     emptyOutDir: true,
   },
 });
