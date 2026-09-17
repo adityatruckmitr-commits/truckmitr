@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --bg-main: #F4F6F9;
+  --card-bg: #FFFFFF;
+  --border-color: #E2E8F0;
+  --text-primary: #0F172A;
+  --text-secondary: #64748B;
+  --primary-orange: #E05A1B;
+  --primary-teal: #0D9488;
+  --success-green: #059669;
+  --warning-amber: #D97706;
+  --danger-red: #DC2626;
+  --purple-accent: #7C3AED;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Card SaaS Container */
+.card-saas {
+  background: #FFFFFF;
+  border-radius: 14px;
+  padding: 20px;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  transition: all 0.2s ease;
+}
+
+/* Dashboard White KPI Cards */
+.kpi-card-white {
+  background: #FFFFFF;
+  border-radius: 14px;
+  padding: 16px 18px 18px 18px;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: visible;
+}
+.kpi-card-white:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.08);
+  border-color: #CBD5E1;
+}
+
+.kpi-icon-box {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #fff;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+}
+
+/* SaaS Gradient Detail Cards */
+.gradient-detail-card {
+  background: #FFFFFF;
+  border-radius: 14px;
+  padding: 16px 18px 20px 18px;
+  position: relative;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+.gradient-detail-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.08);
+}
+
+.grad-orange { border: 1.5px solid #FDBA74; }
+.grad-dark   { border: 1.5px solid #94A3B8; }
+.grad-green  { border: 1.5px solid #6EE7B7; }
+.grad-red    { border: 1.5px solid #FCA5A5; }
+.grad-purple { border: 1.5px solid #D8B4FE; }
+.grad-cyan   { border: 1.5px solid #7DD3FC; }
+.grad-blue   { border: 1.5px solid #93C5FD; }
+
+/* Activity Sparkline Bars */
+.activity-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 32px;
+  flex: 1;
+}
+.activity-bar {
+  flex: 1;
+  min-height: 4px;
+  border-radius: 2px 2px 0 0;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+.activity-bar:hover {
+  opacity: 1 !important;
+  transform: scaleY(1.2);
+}
+
+.grad-orange .activity-bar { background-color: #E05A1B; opacity: 0.45; }
+.grad-dark   .activity-bar { background-color: #0F172A; opacity: 0.45; }
+.grad-green  .activity-bar { background-color: #059669; opacity: 0.45; }
+.grad-red    .activity-bar { background-color: #DC2626; opacity: 0.45; }
+.grad-purple .activity-bar { background-color: #7C3AED; opacity: 0.45; }
+.grad-cyan   .activity-bar { background-color: #0284C7; opacity: 0.45; }
+.grad-blue   .activity-bar { background-color: #2563EB; opacity: 0.45; }
+
+/* SaaS Tables */
+.table-saas {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table-saas th {
+  background-color: #F8FAFC;
+  color: #475569;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 10px 14px;
+  border-bottom: 1px solid #E2E8F0;
+}
+.table-saas td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #F1F5F9;
+  font-size: 13px;
+  color: #334155;
+}
+.table-saas tbody tr {
+  transition: background-color 0.12s ease;
+}
+.table-saas tbody tr:hover {
+  background-color: #F8FAFC;
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+}
+.badge-success {
+  background-color: #D1FAE5;
+  color: #059669;
+}
+.badge-warning {
+  background-color: #FEF3C7;
+  color: #D97706;
+}
+.badge-danger {
+  background-color: #FEE2E2;
+  color: #DC2626;
+}
+.badge-info {
+  background-color: #E0F2FE;
+  color: #0284C7;
+}
+
+/* Animations */
+@keyframes modalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

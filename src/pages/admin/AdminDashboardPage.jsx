@@ -229,39 +229,45 @@ export const AdminDashboardPage = () => {
       try {
         // 1. Dashboard Core Stats
         const statsRes = await api.get('/admin/dashboard-stats');
-        if (statsRes?.data) {
-          setStats((prev) => ({ ...prev, ...statsRes.data }));
+        const statsPayload = statsRes?.data?.data !== undefined ? statsRes.data.data : statsRes?.data;
+        if (statsPayload) {
+          setStats((prev) => ({ ...prev, ...statsPayload }));
         }
 
         // 2. Recent Jobs
         const jobsRes = await api.get('/admin/recent-jobs');
-        if (jobsRes?.data && Array.isArray(jobsRes.data)) {
-          setRecentJobs(jobsRes.data);
+        const jobsPayload = jobsRes?.data?.data !== undefined ? jobsRes.data.data : jobsRes?.data;
+        if (jobsPayload && Array.isArray(jobsPayload)) {
+          setRecentJobs(jobsPayload);
         }
 
         // 3. Recent Drivers
         const driversRes = await api.get('/admin/recent-drivers');
-        if (driversRes?.data && Array.isArray(driversRes.data)) {
-          setRecentDrivers(driversRes.data);
+        const driversPayload = driversRes?.data?.data !== undefined ? driversRes.data.data : driversRes?.data;
+        if (driversPayload && Array.isArray(driversPayload)) {
+          setRecentDrivers(driversPayload);
         }
 
         // 4. Recent Transporters
         const transpRes = await api.get('/admin/recent-transporters');
-        if (transpRes?.data) {
-          if (Array.isArray(transpRes.data.registered)) setRecentTransporters(transpRes.data.registered);
-          if (Array.isArray(transpRes.data.subscribed)) setRecentPaidTransporters(transpRes.data.subscribed);
+        const transpPayload = transpRes?.data?.data !== undefined ? transpRes.data.data : transpRes?.data;
+        if (transpPayload) {
+          if (Array.isArray(transpPayload.registered)) setRecentTransporters(transpPayload.registered);
+          if (Array.isArray(transpPayload.subscribed)) setRecentPaidTransporters(transpPayload.subscribed);
         }
 
         // 5. State Registrations
         const stateRes = await api.get('/admin/state-registrations', { params: { range: stateRange, sort_by: stateSortBy } });
-        if (stateRes?.data && Array.isArray(stateRes.data)) {
-          setStateData(stateRes.data);
+        const statePayload = stateRes?.data?.data !== undefined ? stateRes.data.data : stateRes?.data;
+        if (statePayload && Array.isArray(statePayload)) {
+          setStateData(statePayload);
         }
 
         // 6. Daily Ledger
         const ledgerRes = await api.get('/admin/daily-ledger', { params: { from_date: fromDate, to_date: toDate } });
-        if (ledgerRes?.data) {
-          setDailyLedgerData(ledgerRes.data);
+        const ledgerPayload = ledgerRes?.data?.data !== undefined ? ledgerRes.data.data : ledgerRes?.data;
+        if (ledgerPayload) {
+          setDailyLedgerData(ledgerPayload);
         }
       } catch (err) {
         console.warn('Live API response loaded with fallback data:', err);
@@ -278,8 +284,9 @@ export const AdminDashboardPage = () => {
     setStateLoading(true);
     try {
       const res = await api.get('/admin/state-registrations', { params: { range: newRange, sort_by: newSort } });
-      if (res?.data && Array.isArray(res.data)) {
-        setStateData(res.data);
+      const payload = res?.data?.data !== undefined ? res.data.data : res?.data;
+      if (payload && Array.isArray(payload)) {
+        setStateData(payload);
       }
     } catch (err) {
       console.warn('State filter error:', err);
@@ -293,8 +300,9 @@ export const AdminDashboardPage = () => {
     setLedgerLoading(true);
     try {
       const res = await api.get('/admin/daily-ledger', { params: { from_date: fromDate, to_date: toDate } });
-      if (res?.data) {
-        setDailyLedgerData(res.data);
+      const payload = res?.data?.data !== undefined ? res.data.data : res?.data;
+      if (payload) {
+        setDailyLedgerData(payload);
         showToast('Daily Analytical Ledger updated successfully!', 'success');
       }
     } catch (err) {
